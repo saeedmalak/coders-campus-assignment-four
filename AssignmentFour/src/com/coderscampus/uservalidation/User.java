@@ -1,18 +1,12 @@
 package com.coderscampus.uservalidation;
 
-public class User {
+public class User implements Comparable<User>{
 
 	// private instance variables
 		private String username;
 		private String password;
 		private String name;
-		
-		// contructor that updates instance variables
-		public User(String username, String password, String name) {
-			this.username = username;
-			this.password = password;
-			this.name = name;
-		}
+		protected String role;
 
 		// getters and setters for the above instance variables
 		public String getUsername() {
@@ -39,4 +33,16 @@ public class User {
 			this.name = name;
 		}
 
+		public String getRole() {
+			return role;
+		}
+		
+		@Override
+		public int compareTo(User that) {
+			int c = that.getRole().compareTo(this.getRole());
+			if (c == 0) {
+				c = this.getUsername().compareTo(that.getUsername());
+			}
+			return c;
+		}
 }

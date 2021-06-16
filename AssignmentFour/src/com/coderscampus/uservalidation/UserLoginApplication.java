@@ -13,7 +13,9 @@ public class UserLoginApplication {
 		User[] users = fileService.readFile();
 
 		// call the validateUser function passing in the users array
-		userService.validateUser(users, scanner);
+		User[] userUpdate = userService.validateUser(users, scanner);
+		
+		fileService.writeFile(userUpdate);
 
 		// close the scanner if its not 'null'
 		if (scanner != null)
